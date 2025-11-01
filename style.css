@@ -1,0 +1,427 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    color: black;
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#typing-text::after {
+    content: '|';
+    margin-left: 5px;
+    animation: blink-caret .75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+header {
+    background-color: white;
+    padding: auto;
+    text-align: center; 
+
+    width: 55%;
+    max-width: 1000px;
+
+    margin: 20px auto;
+    display: flex;
+    justify-content: center; /* Membuat satu-satunya item (yaitu <nav>) ke tengah */
+    align-items: center;
+    border-radius: 50px;
+
+    position: sticky;
+    top: 10px;
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 17px;
+    display: flex;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 40px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+nav a {
+    color: rgb(0, 0, 0);             
+    text-decoration: none;    
+}
+
+nav a i {
+    margin-right: 5px;
+}
+
+nav a.active {
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+    color: #ffffff;  
+}
+
+nav a:hover {
+    background-color: black;
+    padding: 10px;
+    border-radius: 15px;
+    color: #ffffff;              
+}
+
+.main-container {
+    display: flex;
+    align-items: center; /* Membuat kolom teks dan gambar sejajar di tengah (vertikal) */
+    width: auto;
+    max-width: 1300px;
+    margin: 50px auto; /* Membuat seluruh bagian ini ada di tengah halaman */
+    gap: 50px; /* Memberi jarak 50px di antara kolom teks dan gambar */
+}
+
+.about-container {
+    display: flex;
+    align-items: center; /* Membuat kolom teks dan gambar sejajar di tengah (vertikal) */
+    width: auto;
+    max-width: 1300px;
+    margin: 80px auto; /* Membuat seluruh bagian ini ada di tengah halaman */
+    gap: 50px; /* Memberi jarak 50px di antara kolom teks dan gambar */
+}
+
+.main-text {
+    flex: 1;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #7a7777;
+}
+
+.title2 {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.images {
+    flex: 1;
+}
+
+.images img {
+    width: 80%;
+    margin-left: 100px;
+    border-radius: 10px;
+}
+
+.main-text h1 {
+    font-size: 60px;
+    margin: 10px 0;
+}
+
+.sub-heading {
+    font-size: 38px;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.sub-heading2 {
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    margin-top: 40px;
+}
+
+.loc {
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    gap: 20px;
+}
+
+.loc i {
+    width: 15px;
+}
+
+.badge {
+    background-color: transparent;
+    box-shadow: 0 10px 15px rgba(223, 114, 4, 0.1);
+    color: #7a7777;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 20px; /* Ini buat bentuknya "pill" / kapsul */
+    display: inline-block; /* Agar background-nya tidak selebar layar */
+    font-size: 12px;
+}
+
+.button {
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    margin-right: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-solid {
+    background-color: black;
+    color: white;
+}
+
+.btn-outline {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.sosmed {
+    margin-top: 20px;
+    display: flex;
+}
+
+.sosmed p {
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.sosmed a {
+    text-decoration: none;  /* Menghilangkan garis bawah link */
+    color: black;           /* Mengubah warna ikon jadi hitam */
+    font-size: 24px;        /* Mengubah ukuran ikon */
+    margin-left: 10px;
+    vertical-align: -5px; /* Menurunkan posisi icon agar ditengah*/
+}
+
+.drive-me {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+}
+
+.drive-me2 {
+    background-color: white;
+    border: 2.5px solid black;
+    border-radius: 8px;
+    padding: 1px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    min-width: 250px;
+}
+
+.drive-me2:hover {
+    background-color: rgba(218, 100, 17, 0.2);
+    border: 3px solid #FFA500;
+    border-radius: 8px;
+    padding: 1px;
+    text-align: center;
+    transform: scale(1.1);
+}
+
+/* Project*/
+
+#project h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-top: 80px;
+}
+
+#project p {
+    text-align: center;
+    max-width: 200px;
+    margin: 10px auto 40px auto;
+    color: black;
+}
+
+.project-container {
+    max-width: 1300px;
+    margin: 80px auto;
+    gap: 20px;
+}
+
+.page-project {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.project-box {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    
+    flex: 1 1 350px;
+    max-width: 450px;
+
+    overflow: hidden;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.project-box img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    margin-top: 0;
+}
+
+.project-info p {
+    font-size: 14px;
+    color: #FFA500;
+    line-height: 1.5;
+}
+
+.project-tags {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-tags span {
+    background-color: #FFA500;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.project-btn {
+    margin-top: 20px;
+    justify-content: center;
+    display: flex;
+    gap: 15px;
+}
+
+.btn-project {
+    background-color: #FFA500;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.project-info h3 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn-project:hover {
+    background-color: #b77803;
+}
+
+.btn-project i {
+    margin-right: 6px;
+}
+
+
+/*Service*/
+#service h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-top: 100px;
+}
+
+#service p {
+    text-align: center;
+    max-width: 200px;
+    margin: 10px auto 40px auto;
+    color: black;
+}
+
+.service-container {
+    max-width: 1300px;
+    margin: 80px auto;
+    gap: 20px;
+}
+
+.service-page {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.service-box {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    
+    flex: 1;
+    max-width: 300px;
+
+    overflow: hidden;
+
+    background-image: linear-gradient(to right, #ffa600ce 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right;
+    transition: transform 0.3s ease, 
+                box-shadow 0.3s ease,
+                background-position 0.4s ease-out;
+}
+
+.service-box:hover {
+    background-position: left;
+
+    box-shadow: 0 8px 16px rgba(209, 165, 5, 0.3);
+}
+
+.service-box img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.service-info {
+    padding: 10px;
+}
+
+.service-info h3 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.service-info p {
+    text-align: center;
+}
