@@ -47,6 +47,8 @@ fadeElements.forEach(element => {
     fadeObserver.observe(element)
 })
 
+// Effect
+
 const typingTextElement = document.getElementById('typing-text');
 const roles = ["Web Enthusiast", "Game Programmer", "UI/UX Designer"];
 
@@ -87,5 +89,57 @@ function typeWriter() {
 document.addEventListener('DOMContentLoaded', () => {
     if (typingTextElement) {
         typeWriter();
+    }
+});
+
+
+// Contact
+
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+contactForm.addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    formStatus.textContent = 'Sending...';
+    formStatus.className = 'status-sending';
+
+    const formData = new FormData(event.target);
+
+    try {
+        const response = await fetch ('https://formspree.io/f/xrbovapg', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            formStatus.textContent = 'Thanks! Your message was sent.';
+            formStatus.className = 'status-success';
+            contactForm.reset();
+        } else {
+            formStatus.textContent = 'Oops! There was a problem. Please try again.';
+            formStatus.className = 'status-error';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        formStatus.textContent = 'Oops! A network error occurred.';
+        formStatus.className = 'status-error';
+    }
+});
+
+// Scroll
+
+const scrollTopBtn = document.querySelector('.scroll-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollTopBtn.style.opacity = '1';
+        scrollTopBtn.style.pointerEvents = 'auto';
+    } else {
+        scrollTopBtn.style.opacity = '0';
+        scrollTopBtn.style.pointerEvents = 'none';
     }
 });
