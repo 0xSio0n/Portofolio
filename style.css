@@ -2,6 +2,9 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: white;
     color: black;
+
+    margin: 0;
+    padding: 0;
 }
 
 .fade-in-section {
@@ -424,4 +427,190 @@ nav a:hover {
 
 .service-info p {
     text-align: center;
+}
+
+/*Contact*/
+
+#contact h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-top: 100px;
+}
+
+#contact h3 {
+    text-align: center;
+}
+
+.contact-container {
+    display: flex;
+    max-width: 1300px;
+    margin: 80px auto;
+    gap: 20px;
+}
+
+.side-form p {
+    font-size: 20px;
+}
+
+.ifno {
+    margin-top: 50px;
+}
+
+.main-form {
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ffa600ce;
+}
+
+.btn-submit {
+    padding: 12px 20px;
+    background-color: #ffa600ce ;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #b17608ce;
+}
+
+#form-status {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.status-success {
+    color: green;
+}
+
+.status-error {
+    color: red;
+}
+
+.status-sending {
+    color: #b77803;
+}
+
+/* Footer */
+
+#footer {
+    width: auto;
+    background-color: #000;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    width: auto;
+    margin: 0 auto;
+}
+
+.footer-container h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.footer-nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 30px auto;
+}
+
+.footer-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.footer-socials a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.footer-socials a:hover {
+    transform: scale(1.1);
+}
+
+.footer-copyright {
+    font-size: 14px;
+    color: #aaa;
+    margin: 0;
+}
+
+/* Scroll */
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    
+    background-color: #b77803;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    text-decoration: none;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-3px);
 }
