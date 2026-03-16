@@ -3,12 +3,40 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Portfolio of Sion - Web Enthusiast, Game Programmer, and UI/UX Designer based in Indonesia.">
+        <meta name="keywords" content="portfolio, web developer, game programmer, UI/UX designer, Indonesia">
+        <meta name="author" content="Leon Sion Turnip">
+        <meta name="robots" content="index, follow">
+        
+        <!-- Open Graph Tags -->
+        <meta property="og:title" content="Portfolio - Sion">
+        <meta property="og:description" content="Web Enthusiast, Game Programmer, UI/UX Designer based in Indonesia">
+        <meta property="og:image" content="assets/me.JPG">
+        <meta property="og:url" content="https://0xsio0n.github.io/Portofolio/">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Portfolio Sion">
+        
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Portfolio - Sion">
+        <meta name="twitter:description" content="Web Enthusiast, Game Programmer, UI/UX Designer">
+        <meta name="twitter:image" content="assets/me.JPG">
+        
         <title>Portofolio Sion</title>
 
+        <link rel="icon" href="assets/me.JPG" type="image/jpeg">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     </head>
     <body>
+        <!-- Scroll Progress Bar -->
+        <div class="scroll-progress"></div>
+
+        <!-- Back to Top Button -->
+        <a href="#home" class="scroll-to-top">
+            <i class="fa-solid fa-arrow-up"></i>
+        </a>
+
         <Header>
             <nav>
                 <ul>
@@ -42,6 +70,11 @@
                             <i class="fa-solid fa-envelope"></i>
                             Contact
                         </a>
+                    </li>
+                    <li>
+                        <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                            <i class="fa-solid fa-moon"></i>
+                        </button>
                     </li>
                 </ul>
             </nav>
@@ -151,8 +184,15 @@
                 <p>_____________</p>
                 <p><br>Here's a look at what I've been working on.</p>
 
+                <div class="project-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web</button>
+                    <button class="filter-btn" data-filter="game">Game</button>
+                    <button class="filter-btn" data-filter="uiux">UI/UX</button>
+                </div>
+
                 <div class="page-project">
-                    <div class="project-box">
+                    <div class="project-box" data-category="web">
                         <img src="assets/do-project.jpg" alt="Do Task Website">
 
                         <div class="project-info">
@@ -176,7 +216,7 @@
                         </div>
                     </div>
 
-                    <div class="project-box">
+                    <div class="project-box" data-category="web">
                         <img src="assets/portofolio.jpg" alt="Portofolio">
 
                         <div class="project-info">
@@ -200,7 +240,7 @@
                         </div>
                     </div>
 
-                    <div class="project-box">
+                    <div class="project-box" data-category="game">
                         <img src="assets/gkm.png" alt="Game Kingdom Divided: The Great Rift">
 
                         <div class="project-info">
@@ -223,7 +263,7 @@
                         </div>
                     </div>
 
-                    <div class="project-box">
+                    <div class="project-box" data-category="uiux">
                         <img src="assets/fooqie.jpg" alt="Fooqie">
 
                         <div class="project-info">
@@ -245,7 +285,7 @@
                         </div>
                     </div>
 
-                    <div class="project-box">
+                    <div class="project-box" data-category="game">
                         <img src="assets/wave.jpg" alt="Wave Rider">
 
                         <div class="project-info">
@@ -367,7 +407,8 @@
         </a>
 
         <script src="script.js"></script>
-
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        
         <footer id="footer">
             <div class="footer-container">
 
@@ -401,5 +442,7 @@
                 
             </div>
         </footer>
+    </body>
+</html>
     </body>
 </html>

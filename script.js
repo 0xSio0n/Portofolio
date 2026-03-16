@@ -1,3 +1,26 @@
+// Dark Mode Toggle
+const darkModeToggle = document.getElementById('darkModeToggle');
+const body = document.body;
+
+// Check for saved preference
+const savedDarkMode = localStorage.getItem('darkMode');
+if (savedDarkMode === 'enabled') {
+    body.classList.add('dark-mode');
+    darkModeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+}
+
+darkModeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    
+    if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+        darkModeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    } else {
+        localStorage.setItem('darkMode', 'disabled');
+        darkModeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+    }
+});
+
 const navLinks = document.querySelectorAll('nav a');
 const sections = document.querySelectorAll('section[id]');
 
@@ -21,7 +44,8 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, {
     // 'threshold' berarti seberapa banyak bagian section harus terlihat
-    threshold: 0.6
+    threshold: 0.2,
+    rootMargin: "-100px 0px -40% 0px"
 });
 
 // Minta observer untuk "mengamati" setiap section
@@ -93,53 +117,101 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Contact
+// Contact - EmailJS
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize EmailJS with PUBLIC KEY
+    emailjs.init("5I_hbEa_A7KK6kWsD");
 
-const contactForm = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
 
-contactForm.addEventListener('submit', async function(event) {
-    event.preventDefault();
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
 
-    formStatus.textContent = 'Sending...';
-    formStatus.className = 'status-sending';
+        formStatus.textContent = 'Sending...';
+        formStatus.className = 'status-sending';
 
-    const formData = new FormData(event.target);
+        const templateParams = {
+            from_name: document.getElementById('name').value,
+            from_email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        };
 
-    try {
-        const response = await fetch ('https://formspree.io/f/xrbovapg', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
+        emailjs.send('service_dyldhsu', 'template_utjamso', templateParams)
+            .then(function(response) {
+                console.log('SUCCESS!', response);
+                formStatus.textContent = 'Thanks! Your message was sent.';
+                formStatus.className = 'status-success';
+                contactForm.reset();
+            })
+            .catch(function(error) {
+                console.error('FAILED!', error);
+                formStatus.textContent = 'Error: ' + JSON.stringify(error);
+                formStatus.className = 'status-error';
+            });
+    });
+});
 
-        if (response.ok) {
-            formStatus.textContent = 'Thanks! Your message was sent.';
-            formStatus.className = 'status-success';
-            contactForm.reset();
+// Scroll Progress & Back to Top
+const scrollTopBtn = document.querySelector('.scroll-to-top');
+const scrollProgress = document.querySelector('.scroll-progress');
+
+window.addEventListener('scroll', () => {
+    // Scroll Progress Bar
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    
+    if (scrollProgress) {
+        scrollProgress.style.width = scrollPercent + '%';
+    }
+    
+    // Back to Top Button
+    if (scrollTopBtn) {
+        if (scrollTop > 300) {
+            scrollTopBtn.classList.add('visible');
         } else {
-            formStatus.textContent = 'Oops! There was a problem. Please try again.';
-            formStatus.className = 'status-error';
+            scrollTopBtn.classList.remove('visible');
         }
-    } catch (error) {
-        console.error('Error:', error);
-        formStatus.textContent = 'Oops! A network error occurred.';
-        formStatus.className = 'status-error';
     }
 });
 
-// Scroll
+// Project Filter
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectBoxes = document.querySelectorAll('.project-box');
 
-const scrollTopBtn = document.querySelector('.scroll-to-top');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollTopBtn.style.opacity = '1';
-        scrollTopBtn.style.pointerEvents = 'auto';
-    } else {
-        scrollTopBtn.style.opacity = '0';
-        scrollTopBtn.style.pointerEvents = 'none';
+// Add CSS for filtering
+const filterStyle = document.createElement('style');
+filterStyle.textContent = `
+    .project-box.hidden {
+        display: none !important;
     }
+    .project-box.show {
+        animation: fadeIn 0.5s ease;
+    }
+`;
+document.head.appendChild(filterStyle);
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        const filterValue = btn.getAttribute('data-filter');
+        
+        projectBoxes.forEach(box => {
+            const category = box.getAttribute('data-category');
+            
+            if (filterValue === 'all' || filterValue === category) {
+                box.classList.remove('hidden');
+                box.classList.add('show');
+            } else {
+                box.classList.add('hidden');
+                box.classList.remove('show');
+            }
+        });
+    });
 });
